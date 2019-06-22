@@ -31,7 +31,7 @@ public class ConnectionUtil {
 
             // now we actually make the connection:
             conn = DriverManager.getConnection(url, username, password);
-            System.out.println("===CONNECTED===");
+//            System.out.println("===CONNECTED===");
 
         } catch (IOException | SQLException | NullPointerException e) {
             e.printStackTrace();

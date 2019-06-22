@@ -6,8 +6,7 @@ import java.util.List;
 
 public interface AccountDAO {
     List<Account> getAccounts();
-    List<Account> getAccountsByID(int userID);
-    Account getAccountByNumer(long accountNumber);
+    double getBalanceByAccNumer(long accountNumber);
     Account createAccount (Account createAccount);
     Account updateAccount (Account updateAccount);
     Account deleteAccount (Account deleteAccount);
