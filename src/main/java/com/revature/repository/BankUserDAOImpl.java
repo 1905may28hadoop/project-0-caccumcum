@@ -13,6 +13,7 @@ public class BankUserDAOImpl implements BankUserDAO {
     private ResultSet resultSet=null;
     private BankUser bankUser=null;
     private PreparedStatement preparedStatement =null;
+    private long userID =0;
 
     @Override
     public List<BankUser> getUser() {
@@ -38,6 +39,14 @@ public class BankUserDAOImpl implements BankUserDAO {
         }
 
         return userList;
+    }
+
+    @Override
+    public long getUserIDByUserName(String userName) {
+
+
+
+        return 0;
     }
 
     @Override

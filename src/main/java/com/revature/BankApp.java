@@ -22,19 +22,19 @@ public class BankApp {
 		AccountDAO accountDAO = new AccountDAOImpl();
 		System.out.println(accountDAO.getBalanceByAccNumer(1));
 		System.out.println(accountDAO.getAccounts());
-
+*/
 		UserAccountDAO userAccountDAO = new UserAccountDAOImpl();
 		System.out.println(userAccountDAO.getUserAccount());
 		System.out.println(userAccountDAO.getAccByUserID(2));
-
+/*
 
 
 		BankUserDAO bankUser =new BankUserDAOImpl();
 		System.out.println(bankUser.getUser());
 		System.out.println(bankUser.getUserByID(1).getEmail());
 		System.out.println(bankUser.getUserByID(1).getPassWord());
-
 */
+
 //get input from user
 		System.out.println("Welcome to Adam;)Peter Bank!");
 		System.out.println("Have Account ? " +
