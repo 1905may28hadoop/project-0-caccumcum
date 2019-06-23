@@ -6,10 +6,9 @@ import java.util.List;
 
 public interface AccountDAO {
     List<Account> getAccounts();
-    double getBalanceByAccNumer(long accountNumber);
-    Account createAccount (Account createAccount);
-    Account updateAccount (Account updateAccount);
-    Account deleteAccount (Account deleteAccount);
+    double getBalanceByAccNumBer(long accountNumber);
+
+    double newBalance (Account newBalance);
 
 
 }

@@ -11,10 +11,8 @@ public interface UserAccountDAO {
 
     List<UserAccount>  getUserAccount();
 
-    UserAccount createAccount (Account createAccount);
+    int createAccountNumber (UserAccount NewAccountNumber);
 
-    UserAccount updateAccount (Account updateAccount);
-
-    UserAccount deleteAccount (Account deleteAccount);
+    long addUserIDAndAcctNum(UserAccount userID, UserAccount acctNum);
 
 }

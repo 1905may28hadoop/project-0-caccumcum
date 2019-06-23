@@ -20,7 +20,7 @@ public class UserAccountDAOImpl implements UserAccountDAO{
     public long getAccByUserID(long userID) {
         long user1 = 0;
         try(Connection conn = ConnectionUtil.getConnection()){
-            prepareStatement = conn.prepareStatement("SELECT  * from USER_ACCOUNT where Account_number =?");
+            prepareStatement = conn.prepareStatement("SELECT  * from USER_ACCOUNT where userid =?");
             prepareStatement.setLong(1,userID);
             prepareStatement.execute();
             resultSet = prepareStatement.getResultSet();
@@ -57,17 +57,28 @@ public class UserAccountDAOImpl implements UserAccountDAO{
     }
 
     @Override
-    public UserAccount createAccount(Account createAccount) {
-        return null;
+    public int createAccountNumber(UserAccount NewAccountNumber) {
+        return 0;
     }
 
-    @Override
-    public UserAccount updateAccount(Account updateAccount) {
-        return null;
-    }
 
     @Override
-    public UserAccount deleteAccount(Account deleteAccount) {
-        return null;
+    public long addUserIDAndAcctNum(UserAccount userID, UserAccount acctNum) {
+        long addUserID = 0;
+        try (Connection conn = ConnectionUtil.getConnection()){
+            String sql = "INSERT INTO USER_ACCOUNT VALUES(?,?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setDouble(1, userID.getUserID());
+            ps.setDouble(2,acctNum.getAccountNumber());
+            addUserID = ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            CloseStream.close(statement);
+        }
+          return addUserID;
     }
+
+
 }

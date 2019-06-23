@@ -12,34 +12,46 @@ public class BankUser {
     @Override
     public String toString() {
         return "BankUser{" +
-                "userID=" + userID +
+                "userid=" + userID +
                 ", userName='" + userName + '\'' +
                 ", email='" + email + '\'' +
                 ", passWord='" + passWord + '\'' +
                 '}';
     }
 
+
     //===========Default Constructors==============================//
 
-    public BankUser(long userID, String userName, String email, String passWord) {
-        this.userID = userID;
+
+    public BankUser(long userid, String userName, String email, String passWord) {
+        this.userID = userid;
         this.userName = userName;
         this.email = email;
         this.passWord = passWord;
     }
 
-    public BankUser(long userID, String userName, String email) {
-        this.userID = userID;
+    public BankUser(String userName, String email, String passWord) {
+
+        this.userName = userName;
+        this.email = email;
+        this.passWord = passWord;
+    }
+
+    public BankUser( String userName, String email) {
+
         this.userName = userName;
         this.email = email;
     }
+
     //===========getter/setter==============================//
-    public long getUserID() {
+
+
+    public long getUserid() {
         return userID;
     }
 
-    public void setUserID(long userID) {
-        this.userID = userID;
+    public void setUserid(long userid) {
+        this.userID = userid;
     }
 
     public String getUserName() {
@@ -67,12 +79,9 @@ public class BankUser {
     }
 
     public BankUser(long userID, String userName) {
-        this.userID = userID;
-        this.userName = userName;
+           this.userName = userName;
     }
-    public BankUser(long userID) {
-        this.userID = userID;
-    }
+
 
 
 

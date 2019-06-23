@@ -13,6 +13,7 @@ public class AccountDAOImpl implements AccountDAO {
     private ResultSet resultSet = null;
     private Statement statement = null;
     private Account account = null;
+    private long accountNumber;
 
 
     @Override
@@ -20,7 +21,7 @@ public class AccountDAOImpl implements AccountDAO {
         List<Account> accountList = new ArrayList<>();
         try(Connection conn = ConnectionUtil.getConnection()){
             statement = conn.createStatement();
-            resultSet = statement.executeQuery("SELECT  * from ACCOUNT");
+            resultSet = statement.executeQuery("SELECT * FROM ACCOUNT");
             while (resultSet.next()){
                 account = new Account(
                         resultSet.getLong("Account_Number"),resultSet.getLong("balance")
@@ -38,7 +39,8 @@ public class AccountDAOImpl implements AccountDAO {
 
 
     @Override
-    public double getBalanceByAccNumer(long accountNumber) {
+    public double getBalanceByAccNumBer(long accountNumber) {
+        this.accountNumber = accountNumber;
         double balance = 0;
         try(Connection conn = ConnectionUtil.getConnection()){
             prepareStatement = conn.prepareStatement("SELECT  * from ACCOUNT WHERE ACCOUNT_NUMBER = ?");
@@ -55,17 +57,21 @@ public class AccountDAOImpl implements AccountDAO {
     }
 
     @Override
-    public Account createAccount(Account createAccount) {
-        return null;
+    public double newBalance(Account newBalance) {
+        double newbalance1 =0;
+        try (Connection conn = ConnectionUtil.getConnection()){
+            String sql = "INSERT INTO ACCOUNT (BALANCE) VALUES(?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setDouble(1, newBalance.getBalance());
+            newbalance1 = ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            CloseStream.close(statement);
+        }
+        return newbalance1;
     }
 
-    @Override
-    public Account updateAccount(Account updateAccount) {
-        return null;
-    }
 
-    @Override
-    public Account deleteAccount(Account deleteAccount) {
-        return null;
-    }
 }

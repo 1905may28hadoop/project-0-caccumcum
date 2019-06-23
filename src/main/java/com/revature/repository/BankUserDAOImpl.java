@@ -4,6 +4,7 @@ package com.revature.repository;
         import com.revature.util.CloseStream;
         import com.revature.util.ConnectionUtil;
 
+        import java.io.IOException;
         import java.sql.*;
         import java.util.ArrayList;
         import java.util.List;
@@ -44,8 +45,6 @@ public class BankUserDAOImpl implements BankUserDAO {
     @Override
     public long getUserIDByUserName(String userName) {
 
-
-
         return 0;
     }
 
@@ -59,7 +58,6 @@ public class BankUserDAOImpl implements BankUserDAO {
             resultSet.next();
             bankUser = new BankUser(resultSet.getLong("userid"),resultSet.getString("username"),
                     resultSet.getString("email"),resultSet.getString("password"));
-
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -71,7 +69,21 @@ public class BankUserDAOImpl implements BankUserDAO {
 
     @Override
     public int createUser(BankUser user) {
-        return 0;
+        int userCreated = 0;
+        try (Connection conn = ConnectionUtil.getConnection()){
+            String sql = "INSERT INTO BANK_USER (USERNAME, EMAIL, PASSWORD) VALUES(?,?,?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, user.getUserName());
+            ps.setString(2, user.getEmail());
+            ps.setString(3,  user.getPassWord());
+            userCreated = ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            CloseStream.close(statement);
+        }
+        return userCreated;
     }
 
     @Override
@@ -83,4 +95,6 @@ public class BankUserDAOImpl implements BankUserDAO {
     public int deleteUser(BankUser user) {
         return 0;
     }
+
+
 }
