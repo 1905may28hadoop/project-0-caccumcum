@@ -12,7 +12,7 @@ public class AccountMenu {
 
         long userID = 0;
         long accountNumber = 0;
-        double balance = 0;
+        double balance=0;
         // get user from username
         BankUserDAO bankUserDAO = new BankUserDAOImpl();
         List<BankUser> userList = bankUserDAO.getUser();
@@ -22,14 +22,13 @@ public class AccountMenu {
                 userID = user.getUserID();
             }
             //pass userid to get Account number
-            UserAccountDAO userAccountDAO = new UserAccountDAOImpl();
+        UserAccountDAO userAccountDAO = new UserAccountDAOImpl();
+        accountNumber =userAccountDAO.getAccByUserID(userID);
 
-            accountNumber =userAccountDAO.getAccByUserID(userID);
-
-            //get balance
-            AccountDAO accountDAO = new AccountDAOImpl();
-            balance = accountDAO.getBalanceByAccNumer(accountNumber);
-            System.out.println(balance);
+        //get balance
+        AccountDAO accountDAO = new AccountDAOImpl();
+        balance = accountDAO.getBalanceByAccNumer(accountNumber);
+      //  System.out.println(balance);
         }
         return balance;
     }

@@ -74,7 +74,7 @@ public class BankApp {
 				AccountMenu option = new AccountMenu();
 
 				if (input2.equals("b")) {
-					option.AccountBalance(userName);
+					System.out.println("Your Balance is: " + option.AccountBalance(userName));
 
 				} else if (input2.equals("d")) {
 					option.deposit();
